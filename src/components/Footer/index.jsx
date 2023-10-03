@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Panier from "../../assets/panier.png";
 import colors from "../../utils/style/colors";
+import insta from "../../assets/instagram.png";
+import tiktok from "../../assets/tiktok.png";
 
 const FooterContainer = styled.nav`
   padding: 30px 0px 30px 0px;
-  background-color: #393939;
+  background-color: ${colors.primary};
+  color: ${colors.text};
 `;
 
 const LogoSM = styled.img`
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 
   &:hover {
-    height: 32px;
-    width: 32px;
+    height: 27px;
+    width: 27px;
   }
 `;
 
@@ -38,53 +40,62 @@ const LogoContainer = styled.nav`
 `;
 
 const SocialMediaContainer = styled.nav`
-display: flex;
-text-align: center;
-justify-content: center;
-width: 100%;
-margin-top: 60px;`;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 50px;
+`;
 const CopyrightContainer = styled.nav`
-border-top: 1px ${colors.text} solid;
-text-align: center;`;
+  border-top: 1px ${colors.footer} solid;
+  text-align: center;
+`;
 
 const CopyrightPart = styled.nav`
-
-width: 100%;
-text-align: center;
-margin-top: 55px;
-`; 
+  width: 100%;
+  text-align: center;
+  margin-top: 55px;
+`;
 
 const LinkPart = styled.nav`
   margin-top: 65px;
-`
+`;
 
 function Footer() {
   return (
     <FooterContainer>
       <SocialMediaContainer>
         <div>
-        <LogoContainer>
-          <Link to="/panier">
-            <LogoSM src={Panier} alt="instagram" />
-          </Link>
-        </LogoContainer>
+          <LogoContainer>
+            <a
+              href="https://www.instagram.com/_u/notti.fr/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LogoSM src={insta} alt="instagram" />
+            </a>
+          </LogoContainer>
         </div>
         <div>
-        <LogoContainer>
-        <Link to="/panier">
-            <LogoSM src={Panier} alt="tiktok" />
-          </Link>
-        </LogoContainer>
+          <LogoContainer>
+            <a
+              href="https://www.tiktok.com/@notti.fr"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LogoSM src={tiktok} alt="tiktok" />
+            </a>
+          </LogoContainer>
         </div>
       </SocialMediaContainer>
       <CopyrightContainer>
         <LinkPart>
-          <StyledLink to="/">Accueil</StyledLink>
-          <StyledLink to="/catalogue">Catalogue</StyledLink>
-          <StyledLink to="/contact">Contact</StyledLink>
-          </LinkPart>
+          <StyledLink to="/">Mentions légales</StyledLink>
+          <StyledLink to="/catalogue">CGV</StyledLink>
+        </LinkPart>
         <CopyrightPart>
-          Copyright
+          Copyright © 2023. Tous droits réservés Notti
         </CopyrightPart>
       </CopyrightContainer>
     </FooterContainer>

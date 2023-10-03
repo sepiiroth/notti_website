@@ -1,16 +1,30 @@
-import styled from "styled-components";
-
-const VideoContainer = styled.video`
-display: block;
-margin: 0 auto;
-width: 100%;
-height: 50%;
-`;
-
-function LogoVideo() {
-    return (<VideoContainer autoplay="" loop="" playsinline="" muted=""> 
-        <source src="" type="video/mp4"></source>
-    </VideoContainer>); 
+function isVideoUrl(url) {
+  return /\.(mp4|webm|ogg)$/i.test(url);
 }
+
+function LogoVideo({ video }) {
+  return (
+    <video
+      className="d-block mx-auto w-100"
+      autoplay=""
+      loop
+      playsinline=""
+      muted=""
+    >
+      <source src={video} type="video/mp4" />
+    </video>
+  );
+}
+
+LogoVideo.propTypes = {
+  video: function (props, propName, componentName) {
+    const url = props[propName];
+    if (typeof url !== "string" || !isVideoUrl(url)) {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}. Expected a video URL, got ${url}`
+      );
+    }
+  },
+};
 
 export default LogoVideo;
